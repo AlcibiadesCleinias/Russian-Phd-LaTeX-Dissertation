@@ -50,16 +50,12 @@
 % Если все команды закомментированы, то документ будет выведен в PDF файл полностью
 
 \begin{document}
-%%% Переопределение именований типовых разделов
-\ifxetexorluatex
-    % https://tex.stackexchange.com/a/156050
-    \gappto\captionsrussian{\input{common/renames}\unskip} % for polyglossia
-\else
-    \input{common/renames} % for babel
-\fi
+
+\input{common/renames}                 % Переопределение именований
 
 %%% Структура диссертации (ГОСТ Р 7.0.11-2011, 4)
 \include{Dissertation/title}           % Титульный лист
+\include{Dissertation/annotation}
 \include{Dissertation/contents}        % Оглавление
 \ifnumequal{\value{contnumfig}}{1}{}{\counterwithout{figure}{chapter}}
 \ifnumequal{\value{contnumtab}}{1}{}{\counterwithout{table}{chapter}}
@@ -72,12 +68,10 @@
 \include{Dissertation/part2}           % Глава 2
 \include{Dissertation/part3}           % Глава 3
 \include{Dissertation/conclusion}      % Заключение
-\include{Dissertation/acronyms}        % Список сокращений и условных обозначений
-\include{Dissertation/dictionary}      % Словарь терминов
+% \include{Dissertation/acronyms}        % Список сокращений и условных обозначений
+% \include{Dissertation/dictionary}      % Словарь терминов
 \include{Dissertation/references}      % Список литературы
-\include{Dissertation/lists}           % Списки таблиц и изображений (иллюстративный материал)
-
-\setcounter{totalchapter}{\value{chapter}} % Подсчёт количества глав
+% \include{Dissertation/lists}           % Списки таблиц и изображений (иллюстративный материал)
 
 %%% Настройки для приложений
 \appendix
@@ -86,8 +80,6 @@
 \renewcommand*{\afterchapternum}{\par\nobreak\vskip \midchapskip}
 \renewcommand\thechapter{\Asbuk{chapter}} % Чтобы приложения русскими буквами нумеровались
 
-\include{Dissertation/appendix}        % Приложения
-
-\setcounter{totalappendix}{\value{chapter}} % Подсчёт количества приложений
+% \include{Dissertation/appendix}        % Приложения
 
 \end{document}

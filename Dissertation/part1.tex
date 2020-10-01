@@ -1,525 +1,852 @@
-\chapter{Оформление различных элементов}\label{ch:ch1}
+\chapter{Формулировка модели}\label{ch:ch1}
 
-\section{Форматирование текста}\label{sec:ch1/sec1}
+\section{Модель двойной пористости}\label{sec:ch1/sec00}
 
-Мы можем сделать \textbf{жирный текст} и \textit{курсив}.
+Рассмотрим насыщенную пористую среду с упругим хрупким скелетом, включающим пористую матрицу и систему магистральных трещин. Матрица имеет низкую проницаемость и относительно высокую пористость. Система трещин характеризуется высокой проницаемостью и низкой пористостью (относительный объем пустот, содержащихся в трещинах). Матрица и трещины насыщены одной и той же слабосжимаемой жидкостью. Блоки матрицы изолированы друг от друга в том смысле, что непосредственное перемещение жидкости из блока в блок отсутствует и может осуществляться только через систему трещин.
 
-\section{Ссылки}\label{sec:ch1/sec2}
+Будем рассматривать среду с двойной пористостью как суперпозицию трех сплошных сред~--- двух флюидов и скелета. Первый континуум (флюид) соответствует жидкости, находящейся в матрице, второй~--- жидкости, заполняющей магистральные трещины. Жидкость взаимодействует со скелетом посредством массовых сил вязкого трения и полагается вязкой сжимаемой. В настоящей работе всюду используется изотермическое приближение (это предположение является традиционным при моделировании нетепловых методов добычи нефти). Предполагается наличие умеренного массообмена между матрицей и трещинами (это означает, что поток между матрицей и трещинами мал по сравнению с потоком в трещинах). Все движения предполагаются квазистатическими (что позволяет пренебречь кинетической энергией и влиянием массообмена на импульс), а деформации скелета малыми. В задаче о производительности скважин характерные масштабы времени много меньше геологических, таким образом, возможной генерацией флюида в нефтематеринской породе можно пренебречь.
 
-Сошлёмся на библиографию.
-Одна ссылка: \cite[с.~54]{Sokolov}\cite[с.~36]{Gaidaenko}.
-Две ссылки: \cite{Sokolov,Gaidaenko}.
-Ссылка на собственные работы: \cite{vakbib1, confbib2}.
-Много ссылок: %\cite[с.~54]{Lermontov,Management,Borozda} % такой «фокус»
-%вызывает biblatex warning относительно опции sortcites, потому что неясно, к
-%какому источнику относится уточнение о страницах, а bibtex об этой проблеме
-%даже не предупреждает
-\cite{Lermontov, Management, Borozda, Marketing, Constitution, FamilyCode,
-Gost.7.0.53, Razumovski, Lagkueva, Pokrovski, Methodology, Berestova,
-Kriger}%
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-    \cite{Sirotko, Lukina, Encyclopedia, Nasirova}%
-}{% Примеры для biblatex через движок biber
-    \cite{Sirotko2, Lukina2, Encyclopedia2, Nasirova2}%
-}%
-.
-И~ещё немного ссылок:~\cite{Article,Book,Booklet,Conference,Inbook,Incollection,Manual,Mastersthesis,
-Misc,Phdthesis,Proceedings,Techreport,Unpublished}
-% Следует обратить внимание, что пробел после запятой внутри \cite{}
-% обрабатывается ожидаемо, а пробел перед запятой, может вызывать проблемы при
-% обработке ссылок.
-\cite{medvedev2006jelektronnye, CEAT:CEAT581, doi:10.1080/01932691.2010.513279,
-Gosele1999161,Li2007StressAnalysis, Shoji199895, test:eisner-sample,
-test:eisner-sample-shorted, AB_patent_Pomerantz_1968, iofis_patent1960}
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-}{% Примеры для biblatex через движок biber
-    \cite{patent2h, patent3h, patent2}%
-}%
-.
+\section{Основные уравнения сохранения}\label{sec:ch1/sec01}
 
-\ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
-Попытка реализовать несколько ссылок на конкретные страницы
-для \texttt{bibtex} реализации библиографии:
-[\citenum{Sokolov}, с.~54; \citenum{Gaidaenko}, с.~36].
-}{% Примеры для biblatex через движок biber
-Несколько источников (мультицитата):
-% Тут специально написано по-разному тире, для демонстрации, что
-% применение специальных тире в настоящий момент в biblatex приводит к непоказу
-% "с.".
-\cites[vii--x, 5, 7]{Sokolov}[v"--~x, 25, 526]{Gaidaenko}[vii--x, 5, 7]{Techreport},
-работает только в \texttt{biblatex} реализации библиографии.
-}%
+Выпишем основные уравнения в рамках сформулированных гипотез. Следствием законов сохранения массы являются три уравнения неразрывности, имеющие вид:
 
-Ссылки на собственные работы:~\cite{vakbib1, confbib1}
-
-Сошлёмся на приложения: Приложение~\cref{app:A}, Приложение~\cref{app:B2}.
-
-Сошлёмся на формулу: формула~\cref{eq:equation1}.
-
-Сошлёмся на изображение: рисунок~\cref{fig:knuth}.
-
-Стандартной практикой является добавление к ссылкам префикса, характеризующего тип элемента.
-Это не является строгим требованием, но~позволяет лучше ориентироваться в документах большого размера.
-Например, для ссылок на~рисунки используется префикс \textit{fig},
-для ссылки на~таблицу "--- \textit{tab}.
-
-В таблице \cref{tab:tab_pref} приложения~\cref{app:B4} приведён список рекомендуемых
-к использованию стандартных префиксов.
-
-\section{Формулы}\label{sec:ch1/sec3}
-
-Благодаря пакету \textit{icomma}, \LaTeX~одинаково хорошо воспринимает
-в~качестве десятичного разделителя и запятую (\(3,1415\)), и точку (\(3.1415\)).
-
-\subsection{Ненумерованные одиночные формулы}\label{subsec:ch1/sec3/sub1}
-
-Вот так может выглядеть формула, которую необходимо вставить в~строку
-по~тексту: \(x \approx \sin x\) при \(x \to 0\).
-
-А вот так выглядит ненумерованная отдельностоящая формула c подстрочными
-и надстрочными индексами:
-\[
-(x_1+x_2)^2 = x_1^2 + 2 x_1 x_2 + x_2^2
-\]
-
-Формула с неопределенным интегралом:
-\[
-\int f(\alpha+x)=\sum\beta
-\]
-
-При использовании дробей формулы могут получаться очень высокие:
-\[
-  \frac{1}{\sqrt{2}+
-  \displaystyle\frac{1}{\sqrt{2}+
-  \displaystyle\frac{1}{\sqrt{2}+\cdots}}}
-\]
-
-В формулах можно использовать греческие буквы:
-%Все \original... команды заранее, ради этого примера, определены в Dissertation\userstyles.tex
-\[
-\alpha\beta\gamma\delta\originalepsilon\epsilon\zeta\eta\theta%
-\vartheta\iota\kappa\varkappa\lambda\mu\nu\xi\pi\varpi\rho\varrho%
-\sigma\varsigma\tau\upsilon\originalphi\phi\chi\psi\omega\Gamma\Delta%
-\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
-\]
-\[%https://texfaq.org/FAQ-boldgreek
-\boldsymbol{\alpha\beta\gamma\delta\originalepsilon\epsilon\zeta\eta%
-\theta\vartheta\iota\kappa\varkappa\lambda\mu\nu\xi\pi\varpi\rho%
-\varrho\sigma\varsigma\tau\upsilon\originalphi\phi\chi\psi\omega\Gamma%
-\Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega}
-\]
-
-Для добавления формул можно использовать пары \verb+$+\dots\verb+$+ и \verb+$$+\dots\verb+$$+,
-но~они считаются устаревшими.
-Лучше использовать их функциональные аналоги \verb+\(+\dots\verb+\)+ и \verb+\[+\dots\verb+\]+.
-
-\subsection{Ненумерованные многострочные формулы}\label{subsec:ch1/sec3/sub2}
-
-Вот так можно написать две формулы, не нумеруя их, чтобы знаки <<равно>> были
-строго друг под другом:
-\begin{align}
-  f_W & =  \min \left( 1, \max \left( 0, \frac{W_{soil} / W_{max}}{W_{crit}} \right)  \right), \nonumber \\
-  f_T & =  \min \left( 1, \max \left( 0, \frac{T_s / T_{melt}}{T_{crit}} \right)  \right), \nonumber
-\end{align}
-
-Выровнять систему ещё и по переменной \( x \) можно, используя окружение
-\verb|alignedat| из пакета \verb|amsmath|. Вот так:
-\[
-    |x| = \left\{
-    \begin{alignedat}{2}
-        &&x, \quad &\text{eсли } x\geqslant 0 \\
-        &-&x, \quad & \text{eсли } x<0
-    \end{alignedat}
-    \right.
-\]
-Здесь первый амперсанд (в исходном \LaTeX\ описании формулы) означает
-выравнивание по~левому краю, второй "--- по~\( x \), а~третий "--- по~слову
-<<если>>. Команда \verb|\quad| делает большой горизонтальный пробел.
-
-Ещё вариант:
-\[
-    |x|=
-    \begin{cases}
-    \phantom{-}x, \text{если } x \geqslant 0 \\
-    -x, \text{если } x<0
-    \end{cases}
-\]
-
-Кроме того, для  нумерованных формул \verb|alignedat| делает вертикальное
-выравнивание номера формулы по центру формулы. Например, выравнивание
-компонент вектора:
 \begin{equation}
-\label{eq:2p3}
-\begin{alignedat}{2}
-{\mathbf{N}}_{o1n}^{(j)} = \,{\sin} \phi\,n\!\left(n+1\right)
-         {\sin}\theta\,
-         \pi_n\!\left({\cos} \theta\right)
-         \frac{
-               z_n^{(j)}\!\left( \rho \right)
-              }{\rho}\,
-           &{\boldsymbol{\hat{\mathrm e}}}_{r}\,+   \\
-+\,
-{\sin} \phi\,
-         \tau_n\!\left({\cos} \theta\right)
-         \frac{
-            \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
-              }{\rho}\,
-            &{\boldsymbol{\hat{\mathrm e}}}_{\theta}\,+   \\
-+\,
-{\cos} \phi\,
-         \pi_n\!\left({\cos} \theta\right)
-         \frac{
-            \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
-              }{\rho}\,
-            &{\boldsymbol{\hat{\mathrm e}}}_{\phi}\:.
-\end{alignedat}
+  \label{eq:masbalance1}
+  \frac{\partial r_1}{\partial t} + \nabla \cdot (r_1 {\textbf{v}}_1 ) = \dot{m}_{12},
 \end{equation}
 
-Ещё об отступах. Иногда для лучшей <<читаемости>> формул полезно
-немного исправить стандартные интервалы \LaTeX\ с учётом логической
-структуры самой формулы. Например в формуле~\cref{eq:2p3} добавлен
-небольшой отступ \verb+\,+ между основными сомножителями, ниже
-результат применения всех вариантов отступа:
-\begin{align*}
-\backslash! &\quad f(x) = x^2\! +3x\! +2 \\
-  \mbox{по-умолчанию} &\quad f(x) = x^2+3x+2 \\
-\backslash, &\quad f(x) = x^2\, +3x\, +2 \\
-\backslash{:} &\quad f(x) = x^2\: +3x\: +2 \\
-\backslash; &\quad f(x) = x^2\; +3x\; +2 \\
-\backslash \mbox{space} &\quad f(x) = x^2\ +3x\ +2 \\
-\backslash \mbox{quad} &\quad f(x) = x^2\quad +3x\quad +2 \\
-\backslash \mbox{qquad} &\quad f(x) = x^2\qquad +3x\qquad +2
-\end{align*}
-
-Можно использовать разные математические алфавиты:
-\begin{align}
-\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber \\
-\mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber \\
-\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber
-\end{align}
-
-Посмотрим на систему уравнений на примере аттрактора Лоренца:
-
-\[
-\left\{
-  \begin{array}{rl}
-    \dot x = & \sigma (y-x) \\
-    \dot y = & x (r - z) - y \\
-    \dot z = & xy - bz
-  \end{array}
-\right.
-\]
-
-А для вёрстки матриц удобно использовать многоточия:
-\[
-\left(
-  \begin{array}{ccc}
-    a_{11} & \ldots & a_{1n} \\
-    \vdots & \ddots & \vdots \\
-    a_{n1} & \ldots & a_{nn} \\
-  \end{array}
-\right)
-\]
-
-\subsection{Нумерованные формулы}\label{subsec:ch1/sec3/sub3}
-
-А вот так пишется нумерованная формула:
 \begin{equation}
-  \label{eq:equation1}
-  e = \lim_{n \to \infty} \left( 1+\frac{1}{n} \right) ^n
+  \label{eq:masbalance2}
+  \frac{\partial r_2}{\partial t} + \nabla \cdot (r_2 {{\textbf{v}}}_2) = \dot{m}_{21},
 \end{equation}
 
-Нумерованных формул может быть несколько:
 \begin{equation}
-  \label{eq:equation2}
-  \lim_{n \to \infty} \sum_{k=1}^n \frac{1}{k^2} = \frac{\pi^2}{6}
+  \label{eq:masbalance3}
+  \frac{\partial r_s}{\partial t} + \nabla \cdot (r_s {{\textbf{v}}}_s) = 0,
+\end{equation}
+где использованы индексы $1$, $2$, $S$ для обозначения величин, относящихся к флюиду, соответствующему жидкости в матрице, флюиду, соответствующему жидкости в трещинах, и к скелету соответственно. Также для обозначения величин, относящихся только к флюидам, используется индекс $\alpha$, а к любому из континуумов индекс $A$.
+
+Тогда $\alpha = 1$ (матрица), $\alpha = 2$ (трещины), $r_{\alpha} = \rho_{f} \phi_{\alpha}$~--- плотность флюида как сплошной среды, $\rho_f$~--- истинная плотность флюида $\alpha$, $\phi_{\alpha}$~--- пористость (объемная доля пустот) матрицы и системы трещин: $\phi_{\alpha} = d V_{void}^{\alpha}/dV$ ($d V_{void}^{\alpha}$~--- объем, занимаемый жидкостью в подсистеме $\alpha$ (объем пустотного пространства), $d V$~--- элементарный объем), ${\textbf{v}}_{\alpha}$~--- скорость флюида, $\textbf{v}_{s}$~--- скорость скелета, плотность скелета как сплошной среды $r_s = (1 - \phi_1 - \phi_2) \rho_s$, $\rho_s$~--- истинная плотность скелета, $\dot{m}_{12} = -\dot{m}_{21}$ интенсивность массообмена между системами матриц и трещинами.
+
+Уравнения движения флюида и скелета имеют следующий вид соответственно:
+\begin{equation}
+  \label{eq:motion1}
+  r_{\alpha} \frac{d_{\alpha} \textbf{v}_{\alpha}}{d t} = - \phi_{\alpha} \nabla p_{\alpha} + r_{\alpha} {\textbf{g}} + \textbf{b}_{\alpha}^{dis} + \dot{m}_{\alpha \beta} \textbf{v}_{\alpha},
 \end{equation}
 
-Впоследствии на формулы~\cref{eq:equation1, eq:equation2} можно ссылаться.
-
-Сделать так, чтобы номер формулы стоял напротив средней строки, можно,
-используя окружение \verb|multlined| (пакет \verb|mathtools|) вместо
-\verb|multline| внутри окружения \verb|equation|. Вот так:
-\begin{equation} % \tag{S} % tag - вписывает свой текст
-  \label{eq:equation3}
-    \begin{multlined}
-        1+ 2+3+4+5+6+7+\dots + \\
-        + 50+51+52+53+54+55+56+57 + \dots + \\
-        + 96+97+98+99+100=5050
-    \end{multlined}
+\begin{equation}
+  \label{eq:motion2}
+  r_s \frac{d_s {\textbf{v}}_s}{d t} = \nabla \cdot {\textbf{T}}_s + r_s {\textbf{g}} + {\textbf{b}}_s^{int}.
 \end{equation}
 
-Уравнения~\cref{eq:subeq_1,eq:subeq_2} демонстрируют возможности
-окружения \verb|\subequations|.
-\begin{subequations}
-    \label{eq:subeq_1}
-    \begin{gather}
-        y = x^2 + 1 \label{eq:subeq_1-1} \\
-        y = 2 x^2 - x + 1 \label{eq:subeq_1-2}
-    \end{gather}
-\end{subequations}
-Ссылки на отдельные уравнения~\cref{eq:subeq_1-1,eq:subeq_1-2,eq:subeq_2-1}.
-\begin{subequations}
-    \label{eq:subeq_2}
-    \begin{align}
-        y &= x^3 + x^2 + x + 1 \label{eq:subeq_2-1} \\
-        y &= x^2
-    \end{align}
-\end{subequations}
+В данной модели уравнение движения жидкости преобразуется в закон Дарси:
 
-\subsection{Форматирование чисел и размерностей величин}\label{sec:units}
+\begin{equation}
+  \label{eq:darcy}
+  {\textbf{W}}_{\alpha} = - \frac{k_{\alpha}}{\mu_f} (\nabla p_{\alpha} + \rho_{\alpha}\textbf{g}),
+\end{equation}
+где вектор фильтрации ${\textbf{W}}_{\alpha} = \phi_{\alpha} ({\textbf{v}}_{\alpha} - {\textbf{v}}_s)$, $p_{\alpha}$~--- поровое давление, $k_{\alpha}$~--- проницаемость, $\mu_{\alpha}$~--- вязкость жидкости, $\textbf{g}$~--- ускорение свободного падения.
 
-Числа форматируются при помощи команды \verb|\num|:
-\num{5,3};
-\num{2,3e8};
-\num{12345,67890};
-\num{2,6 d4};
-\num{1+-2i};
-\num{.3e45};
-\num[exponent-base=2]{5 e64};
-\num[exponent-base=2,exponent-to-prefix]{5 e64};
-\num{1.654 x 2.34 x 3.430}
-\num{1 2 x 3 / 4}.
-Для написания последовательности чисел можно использовать команды \verb|\numlist| и \verb|\numrange|:
-\numlist{10;30;50;70}; \numrange{10}{30}.
-Значения углов можно форматировать при помощи команды \verb|\ang|:
-\ang{2.67};
-\ang{30,3};
-\ang{-1;;};
-\ang{;-2;};
-\ang{;;-3};
-\ang{300;10;1}.
+Предположим, что проницаемость матрицы стремится к нулю, т.е. $k_1 = 0$, а проницаемость трещин чувствительна к изменению давления $k_2 = k_2(p_2)$ (при этом $v_1 = v_s$).
 
-Обратите внимание, что ГОСТ запрещает использование знака <<->> для обозначения отрицательных чисел
-за исключением формул, таблиц и~рисунков.
-Вместо него следует использовать слово <<минус>>.
+Уравнение движения скелета~\eqref{eq:motion2} преобразуется в уравнение равновесия и тогда это уравнение можно записать как уравнение равновесия для скелета и флюидов как единого целого
 
-Размерности можно записывать при помощи команд \verb|\si| и \verb|\SI|:
-\si{\farad\squared\lumen\candela};
-\si{\joule\per\mole\per\kelvin};
-\si[per-mode = symbol-or-fraction]{\joule\per\mole\per\kelvin};
-\si{\metre\per\second\squared};
-\SI{0.10(5)}{\neper};
-\SI{1.2-3i e5}{\joule\per\mole\per\kelvin};
-\SIlist{1;2;3;4}{\tesla};
-\SIrange{50}{100}{\volt}.
-Список единиц измерений приведён в таблицах~\cref{tab:unit:base,
-tab:unit:derived,tab:unit:accepted,tab:unit:physical,tab:unit:other}.
-Приставки единиц приведены в~таблице~\cref{tab:unit:prefix}.
+\begin{equation}
+  \label{eq:seqaulity}
+  \nabla \cdot {\textbf{T}} = - r {\textbf{g}},
+\end{equation}
+здесь ${\textbf{T}} = {\textbf{T}}_s - (p_1 \phi_1 + p_2 \phi_2) \textbf{I}$~--- тензор полного напряжения в пористой среде, ${\textbf{T}}_s$~--- тензор парциальных напряжений в скелете, $p_{\alpha}$~--- поровое давление в подсистемах, $\textbf{I}$~--- единичный тензор второго ранга, $r = \sum_{A} {r_A}$.
 
-С дополнительными опциями форматирования можно ознакомиться в~описании пакета \texttt{siunitx};
-изменить или добавить единицы измерений можно в~файле \texttt{siunitx.cfg}.
+\section{Определяющие соотношения}\label{sec:ch1/sec02}
 
-\begin{table}
-    \centering
-    \captionsetup{justification=centering} % выравнивание подписи по-центру
-    \caption{Основные величины СИ}\label{tab:unit:base}
-    \begin{tabular}{llc}
-        \toprule
-        Название  & Команда                & Символ         \\
-        \midrule
-        Ампер     & \verb|\ampere| & \si{\ampere}   \\
-        Кандела   & \verb|\candela| & \si{\candela}  \\
-        Кельвин   & \verb|\kelvin| & \si{\kelvin}   \\
-        Килограмм & \verb|\kilogram| & \si{\kilogram} \\
-        Метр      & \verb|\metre| & \si{\metre}    \\
-        Моль      & \verb|\mole| & \si{\mole}     \\
-        Секунда   & \verb|\second| & \si{\second}   \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+Чтобы перейти непосредственно к замыкающим систему уравнений~\eqrefs{eq:masbalance1,eq:masbalance2,eq:masbalance3, eq:darcy, eq:seqaulity} определяющим (или по-другому реологическим) уравнениям, ниже будет выведено приведенное неравенство Клаузиуса-Дюгема в изотермическом приближении.
 
-\begin{table}
-  \small
-  \centering
-  \begin{threeparttable}% выравнивание подписи по границам таблицы
-    \caption{Производные единицы СИ}\label{tab:unit:derived}
-    \begin{tabular}{llc|llc}
-        \toprule
-        Название       & Команда                 & Символ              & Название & Команда & Символ \\
-        \midrule
-        Беккерель      & \verb|\becquerel|  & \si{\becquerel}     &
-        Ньютон         & \verb|\newton|  & \si{\newton}                                      \\
-        Градус Цельсия & \verb|\degreeCelsius| & \si{\degreeCelsius} &
-        Ом             & \verb|\ohm| & \si{\ohm}                                         \\
-        Кулон          & \verb|\coulomb| & \si{\coulomb}       &
-        Паскаль        & \verb|\pascal| & \si{\pascal}                                      \\
-        Фарад          & \verb|\farad| & \si{\farad}         &
-        Радиан         & \verb|\radian| & \si{\radian}                                      \\
-        Грей           & \verb|\gray| & \si{\gray}          &
-        Сименс         & \verb|\siemens| & \si{\siemens}                                     \\
-        Герц           & \verb|\hertz| & \si{\hertz}         &
-        Зиверт         & \verb|\sievert| & \si{\sievert}                                     \\
-        Генри          & \verb|\henry| & \si{\henry}         &
-        Стерадиан      & \verb|\steradian| & \si{\steradian}                                   \\
-        Джоуль         & \verb|\joule| & \si{\joule}         &
-        Тесла          & \verb|\tesla| & \si{\tesla}                                       \\
-        Катал          & \verb|\katal| & \si{\katal}         &
-        Вольт          & \verb|\volt| & \si{\volt}                                        \\
-        Люмен          & \verb|\lumen| & \si{\lumen}         &
-        Ватт           & \verb|\watt| & \si{\watt}                                        \\
-        Люкс           & \verb|\lux| & \si{\lux}           &
-        Вебер          & \verb|\weber| & \si{\weber}                                       \\
-        \bottomrule
-    \end{tabular}
-  \end{threeparttable}
-\end{table}
+Сила трения между флюидами и скелетом, отнесенная к единице объема, имеет вид~\autocite{kondaurov2007, coussy2004poromechanics}:
 
-\begin{table}
-  \centering
-  \begin{threeparttable}% выравнивание подписи по границам таблицы
-    \caption{Внесистемные единицы}\label{tab:unit:accepted}
+\begin{equation}
+  \label{eq:bint}
+  \textbf{b}^{int}_{\alpha} = - p_{\alpha} \nabla \phi_{\alpha} + \textbf{b}^{dis}_{\alpha},
+\end{equation}
+где, в случае использования линейного закона течения в форме закона Дарси~\eqref{eq:darcy}, диссипативная часть этой силы взаимодействия равна
 
-    \begin{tabular}{llc}
-        \toprule
-        Название        & Команда                 & Символ          \\
-        \midrule
-        День            & \verb|\day| & \si{\day}       \\
-        Градус          & \verb|\degree| & \si{\degree}    \\
-        Гектар          & \verb|\hectare| & \si{\hectare}   \\
-        Час             & \verb|\hour| & \si{\hour}      \\
-        Литр            & \verb|\litre| & \si{\litre}     \\
-        Угловая минута  & \verb|\arcminute| & \si{\arcminute} \\
-        Угловая секунда & \verb|\arcsecond| & \si{\arcsecond} \\ %
-        Минута          & \verb|\minute| & \si{\minute}    \\
-        Тонна           & \verb|\tonne| & \si{\tonne}     \\
-        \bottomrule
-    \end{tabular}
-  \end{threeparttable}
-\end{table}
+\begin{equation}
+  \label{eq:bdis}
+  \textbf{b}^{dis}_{\alpha} = - \frac{\mu_{\alpha}}{\phi_{\alpha} k_{\alpha}} \textbf{W}_{\alpha}.
+\end{equation}
 
-\begin{table}
-    \centering
-    \captionsetup{justification=centering}
-    \caption{Внесистемные единицы, получаемые из эксперимента}\label{tab:unit:physical}
-    \begin{tabular}{llc}
-        \toprule
-        Название                & Команда                 & Символ                 \\
-        \midrule
-        Астрономическая единица & \verb|\astronomicalunit| & \si{\astronomicalunit} \\
-        Атомная единица массы   & \verb|\atomicmassunit| & \si{\atomicmassunit}   \\
-        Боровский радиус        & \verb|\bohr| & \si{\bohr}             \\
-        Скорость света          & \verb|\clight| & \si{\clight}           \\
-        Дальтон                 & \verb|\dalton| & \si{\dalton}           \\
-        Масса электрона         & \verb|\electronmass| & \si{\electronmass}     \\
-        Электрон Вольт          & \verb|\electronvolt| & \si{\electronvolt}     \\
-        Элементарный заряд      & \verb|\elementarycharge| & \si{\elementarycharge} \\
-        Энергия Хартри          & \verb|\hartree| & \si{\hartree}          \\
-        Постоянная Планка       & \verb|\planckbar| & \si{\planckbar}        \\
-        \bottomrule
-    \end{tabular}
-\end{table}
+Дифференциальный закон сохранения энергии для элементарного тела, состоящего из частиц трех континуумов, с учетом уравнений баланса массы~\eqrefs{eq:masbalance1,eq:masbalance2,eq:masbalance3} и приведенных уравнений движения~\eqrefs{eq:darcy,eq:seqaulity} имеет вид
 
-\begin{table}
-  \centering
-  \begin{threeparttable}% выравнивание подписи по границам таблицы
-    \caption{Другие внесистемные единицы}\label{tab:unit:other}
-    \begin{tabular}{llc}
-        \toprule
-        Название                  & Команда                 & Символ             \\
-        \midrule
-        Ангстрем                  & \verb|\angstrom| & \si{\angstrom}     \\
-        Бар                       & \verb|\bar| & \si{\bar}          \\
-        Барн                      & \verb|\barn| & \si{\barn}         \\
-        Бел                       & \verb|\bel| & \si{\bel}          \\
-        Децибел                   & \verb|\decibel| & \si{\decibel}      \\
-        Узел                      & \verb|\knot| & \si{\knot}         \\
-        Миллиметр ртутного столба & \verb|\mmHg| & \si{\mmHg}         \\
-        Морская миля              & \verb|\nauticalmile| & \si{\nauticalmile} \\
-        Непер                     & \verb|\neper| & \si{\neper}        \\
-        \bottomrule
-    \end{tabular}
-  \end{threeparttable}
-\end{table}
+\begin{equation}
+  \label{eq:difenergy}
+  \sum_A{r_A \frac{d_A u_A}{dt}} = \sum_A{\textbf{T}_A : \nabla \otimes \textbf{v}_A} - \sum_A{\textbf{b}^{int}_{\alpha} \cdot \textbf{w}_{\alpha}} + rQ - \nabla \cdot \textbf{q} - \sum_{\alpha \neq \beta}{\dot{m}_{\alpha \beta} u_{\alpha}},
+\end{equation}
+здесь использованы оператор $d_A (\dots)/dt = \partial (\dots)/ \partial t + {\textbf{v}}_A \cdot \nabla \otimes (\dots)$~--- материальная Лагранжева производная вдоль траектории частиц континуума $A$ (знаком <<$\otimes$>> обозначено тензорное умножение), и двойное скалярное произведение ${\textbf{A} : \textbf{B}} = A_{ij} B_{ij}$, а также $u_A$~--- удельная внутренняя энергия, $q$~--- вектор суммарного теплового потока, $rQ$~--- суммарная мощность внешних источников тепла.
 
-\begin{table}
-  \small
-  \centering
-  \begin{threeparttable}% выравнивание подписи по границам таблицы
-    \caption{Приставки СИ}\label{tab:unit:prefix}
-    \begin{tabular}{llcc|llcc}
-        \toprule
-        Приставка & Команда                 & Символ      & Степень &
-        Приставка & Команда                 & Символ      & Степень   \\
-        \midrule
-        Иокто     & \verb|\yocto| & \si{\yocto} & -24     &
-        Дека      & \verb|\deca| & \si{\deca}  & 1         \\
-        Зепто     & \verb|\zepto| & \si{\zepto} & -21     &
-        Гекто     & \verb|\hecto| & \si{\hecto} & 2         \\
-        Атто      & \verb|\atto| & \si{\atto}  & -18     &
-        Кило      & \verb|\kilo| & \si{\kilo}  & 3         \\
-        Фемто     & \verb|\femto| & \si{\femto} & -15     &
-        Мега      & \verb|\mega| & \si{\mega}  & 6         \\
-        Пико      & \verb|\pico| & \si{\pico}  & -12     &
-        Гига      & \verb|\giga| & \si{\giga}  & 9         \\
-        Нано      & \verb|\nano| & \si{\nano}  & -9      &
-        Терра     & \verb|\tera| & \si{\tera}  & 12        \\
-        Микро     & \verb|\micro| & \si{\micro} & -6      &
-        Пета      & \verb|\peta| & \si{\peta}  & 15        \\
-        Милли     & \verb|\milli| & \si{\milli} & -3      &
-        Екса      & \verb|\exa| & \si{\exa}   & 18        \\
-        Санти     & \verb|\centi| & \si{\centi} & -2      &
-        Зетта     & \verb|\zetta| & \si{\zetta} & 21        \\
-        Деци      & \verb|\deci| & \si{\deci}  & -1      &
-        Иотта     & \verb|\yotta| & \si{\yotta} & 24        \\
-        \bottomrule
-    \end{tabular}
-  \end{threeparttable}
-\end{table}
+Для того же элементарного тела второе начало термодинамики в форме неравенства Клаузиуса-Дюгема с учетом массообмена имеет вид
 
-\subsection{Заголовки с формулами: \texorpdfstring{\(a^2 + b^2 = c^2\)}{%
-a\texttwosuperior\ + b\texttwosuperior\ = c\texttwosuperior},
-\texorpdfstring{\(\left\vert\textrm{{Im}}\Sigma\left(
-\protect\varepsilon\right)\right\vert\approx const\)}{|ImΣ (ε)| ≈ const},
-\texorpdfstring{\(\sigma_{xx}^{(1)}\)}{σ\_\{xx\}\textasciicircum\{(1)\}}
-}\label{subsec:with_math}
+\begin{equation}
+  \label{eq:kd1}
+  \sum{A}{r_A \frac{d_A \eta_A}{dt}}
+  + \sum_{\alpha \neq \beta} {\eta_{\alpha} \dot{m}_{\alpha \beta}} + \nabla \left( \frac{\textbf{q}}{\theta} \right)  - \frac{rQ}{\theta} \geq 0,
+\end{equation}
+где $\eta_A$~--- удельная энтропия, $\theta$~--- температура континуумов.
 
-Пакет \texttt{hyperref} берёт текст для закладок в pdf-файле из~аргументов
-команд типа \verb|\section|, которые могут содержать математические формулы,
-а~также изменения цвета текста или шрифта, которые не отображаются в~закладках.
-Чтобы использование формул в заголовках не вызывало в~логе компиляции появление
-предупреждений типа <<\texttt{Token not allowed in~a~PDF string
-(Unicode):(hyperref) removing...}>>, следует использовать конструкцию
-\verb|\texorpdfstring{}{}|, где в~первых фигурных скобках указывается
-формула, а~во~вторых "--- запись формулы для закладок.
+Вводя удельную свободную энергию континуумов  и, исключая из~\eqref{eq:kd1} поток приведенного тепла с помощью~\eqref{eq:difenergy}, а также, используя уравнения сохранения~\eqrefs{eq:masbalance1, eq:masbalance2, eq:masbalance3, eq:darcy, eq:seqaulity}, получим приведенное неравенство Клаузиуса-Дюгема в изотермическом приближении:
 
-\section{Рецензирование текста}\label{sec:markup}
+\begin{equation}
+  \label{eq:kdpriv}
+  - \sum_A{r_A \frac{d_A \, \psi_A}{d t }}
+  + {\textbf{T}}_{s} : \frac{d_s \, \textbf{e}}{d t } + \sum_{\alpha}{\left( p_{\alpha} \frac{d_s \, \phi_{\alpha}}{d t } + \frac{p_{\alpha} \phi_{\alpha}}{\rho_{\alpha}} \frac{d_{\alpha} \, \rho_{\alpha}}{d t} \right)} + \delta_w + \delta_m \geq 0,
+\end{equation}
+где тензор малой демормации обозначен соответственно $\textbf{e} = \frac{1}{2} (\nabla \otimes \textbf{u} + \nabla \otimes \textbf{u}^T)$, $\textbf{u}$~--- вектор перемещений частиц скелета, диссипация, связанная с фильтрацией флюидов:
 
-В шаблоне для диссертации и автореферата заданы команды рецензирования.
-Они видны при компиляции шаблона в режиме черновика или при установке
-соответствующей настройки (\verb+showmarkup+) в~файле \verb+common/setup.tex+.
+$$
+  \delta_w = - \sum_{\alpha} {\textbf{b}}_{\alpha}^{dis} \cdot {\textbf{w}}_{\alpha} = \sum_{\alpha}{\frac{\mu_{\alpha}}{k_{\alpha} \phi_{\alpha}}\textbf{W}_{\alpha}^2} \geq 0,
+$$
+диссипация, связанная с обменом массой между подсистемами:
 
-Команда \verb+\todo+ отмечает текст красным цветом.
-\todo{Например, так.}
+$$
+\delta_m = - \sum_{\alpha \neq \beta} \chi_{\alpha} \dot{m}_{\alpha, \beta},
+$$
+где $\chi_{\alpha} = \psi_{\alpha} + p_{\alpha}/\rho_{\alpha}$~--- свободная энергия Гиббса флюидов.
 
-Команда \verb+\note+ позволяет выбрать цвет текста.
-\note{Чёрный, } \note[red]{красный, } \note[green]{зелёный, }
-\note[blue]{синий.} \note[orange]{Обратите внимание на ширину и расстановку
-формирующихся пробелов, в~результате приведённой записи (зависит также
-от~применяемого компилятора).}
+Далее для замыкания системы законов сохранения~\eqrefs{eq:masbalance1,eq:masbalance2,eq:masbalance3, eq:darcy, eq:seqaulity} сфорулируем систему термодинамически согласованных определяющих соотношений. Согласно теории развитой в~\autocite{trusdell1975} эти соотношения должны удовлетворять принципу детерминизма (утверждает, что реакция материала не зависит от будущих состояний), принципу локального действия (постулирует конечность
+распространения возмущений в сплошной среде), принципу объективности (утверждает, что вид определяющих соотношений не должен зависеть от системы отсчета) и принципу термодинамической согласованности (утверждает, что
+определяющие соотношения должны быть таковы, чтобы неравенство Клаузиса-Дюгема~\eqref{eq:kdpriv} выполнялось в произвольных процессах).
 
-Окружение \verb+commentbox+ также позволяет выбрать цвет.
+Определим понятия <<процесс>> и <<реакция>> в рассматриваемом случае двойной пороупругой среды с хрупким склетом. Сначала определим состояние материальной частицы пористой среды, как набор следующих параметров: тензор малой деформации $\textbf{e}$, плотности флюидов $\rho_{\alpha}$, относительная скорость флюидов и скелета $\textbf{w}_{\alpha}$, параметр поврежденности $\omega$. Параметр $\omega$ является внутренней переменной и в свернутом виде, накапливаясь, несет информацию о прошлых состояниях. Для новой внутренней переменной необходимо сформулировать кинетическое (эволюционное) уравнение. Предложенный набор термодинамических параметров соответствует предположению, что движение флюидов достаточно медленное, а площадь контакта флюида и стенок в скелете настолько большая, что можно пренебречь обменом импульсом внутри жидкости по сравнению с обменом импульсом между жидкостью и скелетом за счет вязкого трения. Сделанное предположение является традиционным для области применимости закона Дарси. В этом приближении флюиды, как сплошные среды, являются идеальными жидкостями, хотя составляющие их жидкости являются вязкими. Под <<процессом>> будем понимать последовательность смены параметров состояния, а под «реакцией» значения остальных неизвестных физических величин.
 
-\begin{commentbox}[red]
-        Красный текст.
+В общем виде, в рамках сделанных предположений, в качестве определяющих соотношений рассматриваемой среды примем набор функций, связывающих реакцию  с текущим состоянием пористой среды
 
-        Несколько параграфов красного текста.
-\end{commentbox}
+\begin{equation}
+  \label{eq:gamma1}
+  \Gamma = \Gamma(\textbf{e}, \rho_{\alpha}, \textbf{w}_{\alpha}, \omega),
+\end{equation}
+где $\Gamma =  \{ \psi_{\alpha}, \textbf{T}_s, p_{\alpha}, \phi_{\alpha}, \dot{m}_{12}, \textbf{b}^{dis}_{\alpha} \}$. Эти соотношения~\eqref{eq:gamma1} должны быть дополнены кинетическим (эволюционным) уравнением на параметр поврежденности $\omega$:
 
-\begin{commentbox}[blue]
-        Синяя формула.
+\begin{equation}
+  \label{eq:omega1}
+  \frac{d_s \omega}{dt} = \Sigma (\textbf{e}, \rho_{\alpha}, \textbf{w}_{\alpha}, \omega),
+\end{equation}
+где $\Sigma$~--- функция текущего состояния среды.
 
-        \begin{equation}
-                \alpha + \beta = \gamma
-        \end{equation}
-\end{commentbox}
+Определяющие соотношения, необходимые и достаточные для выполнения~\eqref{eq:kdpriv} в произвольном процессе имеют следующий вид для флюидов:
 
-\verb+commentbox+ позволяет закомментировать участок кода в~режиме чистовика.
-Чтобы убрать кусок кода для всех режимов, можно использовать окружение
-\verb+comment+.
+\begin{equation}
+  \label{eq:equationfluid}
+        \begin{aligned}
+                \psi_{\alpha} &= \psi_{\alpha} (\rho_{\alpha}), \\
+                p_{\alpha} &= \rho_{\alpha}^2 \frac{\partial \psi_{\alpha}}{\partial \rho_{\alpha}} \\
+        \end{aligned}
+\end{equation}
+и для скелета соответственно:
 
-\begin{comment}
-        Этот текст всегда скрыт.
-\end{comment}
+\begin{equation}
+  \label{eq:equationskelet}
+        \begin{aligned}
+                {\textbf{T}} &= r_s \frac{\partial \Psi}{\partial \textbf{e}}, \\
+                \phi_{\alpha} &= -r_s \frac{\partial \Psi}{\partial p_{\alpha}}. \\
+        \end{aligned}
+\end{equation}
+
+В определяющих соотношениях~\eqref{eq:equationskelet} использован потенциал скелета
+
+$$
+\Psi (\textbf{e}_s, p_{\alpha}, \omega ) = F - \sum_{\alpha}{\frac{p_{\alpha}}{\rho_s} \phi_{\alpha}}, 
+$$
+согласно~\autocite{kondaurov2007}, где $F(\textbf{e}_s, \phi_{\alpha}, \omega) = \psi_s (\textbf{e}_s, \phi_{\alpha}(\textbf{e}_s, \rho_{\alpha}, \omega), \omega)$.
+
+С учетом предложенных выше релогических соотношений~\eqrefs{eq:equationfluid, eq:equationskelet} неравенство Клаузиуса-Дюгема~\eqref{eq:kdpriv} принимает вид неравенства диссипаций:
+
+\begin{equation}
+  \label{eq:dissipneq}
+  \delta_{\omega} + \delta_w + \delta_m \geq 0,
+\end{equation}
+где $\delta_{\omega} = - \left( \frac{\partial \Psi}{\partial \omega} \frac{d_s \omega}{d t} \right) = - \left( \frac{\partial \Psi}{\partial \omega} \right) \Sigma$~---- диссипация, связанная с растрескиванием матрицы.
+
+Процедура доказательства соотношений~\eqrefs{eq:equationfluid, eq:equationskelet, eq:dissipneq} во многом аналогична, используемой в~\autocite{kondaurov2007}, и здесь не приводится.
+
+Далее примем гипотезу, что каждая диссипация в отдельности неотрицательна, что является достаточным условием для выполнения~\eqref{eq:dissipneq}:
+
+\begin{equation}
+  \label{eq:dissipneq2}
+  \delta_{\omega} \geq 0, \, \delta_w \geq 0, \, \delta_m \geq 0,
+\end{equation}
+
+\section{Линеаризация}\label{sec:ch1/sec03}
+
+Чтобы использовать определяющие соотношения для скелета~\eqref{eq:equationskelet}, необходимо определить вид потенциала скелета $\Psi$. Для этого линеаризуем полученные определяющие соотношения в окрестности особого состояния: скелет не деформирован, жидкости покоятся, давления флюидов $p_1^0 = p_2^0 = 0$, т.е. $\{ 0, \rho_{\alpha}, 0, \omega \}$ . Давления во флюидах и напряжения в скелете в произвольных состояниях будем считать малыми по сравнению с характерными упругими модулями скелета $p_{\alpha}/K \ll 1, |\textbf{T}_s|/K \ll 1$, где $K$~--- модуль объемного сжатия скелета. Также рассмотрим частный случай, в котором начальные полные напряжения в состоянии  $ \{ 0, \rho_{\alpha}, 0, 0 \} $ равны нулю (в общем случае это не так, см.~\autocite{muha2018}).
+
+Разложение свободной энергии в ряд по малому параметру $ \delta p_{\alpha} / \rho_{\alpha}^0 \ll 1$ до квадратичных членов в окрестности состояния $\{ 0, \rho_{\alpha}^0, 0, \omega \}$ имеет следующий вид
+
+\begin{equation}
+  \label{eq:freeseries}
+  \rho_{\alpha} \psi_{\alpha} (\rho_{\alpha}) = \psi_{\alpha}^0 + p_{\alpha}^0 \left( \frac{\delta p_{\alpha}}{\rho_{\alpha}^0}\right) + \frac{1}{2} K_f \left( \frac{\delta p_{\alpha}}{\rho_{\alpha}^0} \right)^2,
+\end{equation}
+где $K_f$~--- модуль объемного сжатия жидкости. После подстановки в определяющие соотношения для флюида~\eqref{eq:equationfluid} дает линейное определяющее соотношение
+
+\begin{equation}
+  \label{eq:equationfluidnext}
+  \frac{\delta \rho_{\alpha}}{\rho_{\alpha}^0} = \frac{\delta p_{\alpha}}{K_f}.
+\end{equation}
+
+Вслед за~\autocite{kondaurov2007, izvekov2009, izvekov2010} положим, что влияние поврежденности на упругие модули пренебрежимо мало. При этом макроскопическим проявлением поврежденности становится остаточная деформация в поврежденном материале, что формально сближает данный вариант модели повреждаемости с теорией пластичности. Скелет будем считать изотропным. Представим разложение потенциала скелета до величин второго порядка малости, считая      поврежденность $\omega$ одним из малых параметров, в следующем виде
+
+\begin{equation}
+ \label{eq:skeletseries}
+   \begin{multlined}
+       r_s^0 \Psi({\textbf{e}}, p_{\alpha}, \omega) = \frac{1}{2}\lambda I_1^2 + \mu J^2 + \sum_{\alpha} b_{\alpha} p_{\alpha} I_1 + \\
+       + \sum_{\alpha} \frac{1}{2 N_{\alpha} } p_{\alpha}^2+ \frac{1}{N_{12}} p_1 p_2 + \sum_{\alpha}\phi_{\alpha}^0 p_{\alpha} + \gamma \omega + \beta \omega^2/2 - \\
+       - \alpha I_1 \omega - \alpha_J J \omega - \alpha_{p_1} p_1\omega - \alpha_{p_2} p_2 \omega + \dots,
+   \end{multlined}
+\end{equation}
+где $\lambda, \mu$~--- коффициенты Ламе скелета; $\textbf{I}_1 = \textbf{e} : \textbf{I}$, $\textbf{J} = \sqrt{\textbf{e}' : \textbf{e}'}$, $\textbf{e}'$~--- девиатор тензора малых деформаций; $b_{\alpha}$ и $N_{\alpha}$~--- аналоги коэффициентов Био и модуля Био для матрицы и трещин; $N_{12}$~--- модуль, отвечающий за взаимное влияние поровых давлений в подсистемах, $\alpha \geq 0, \alpha_J \geq 0, \alpha_{p1} \geq 0, \alpha_{p2} \leq 0$~--- коэффициенты, отвечающие за разгрузку упругой энергии при развитии поврежденности, $\gamma, \beta$~--- положительные коэффициенты, задающие нелинейную зависимость от поврежденности нулевого члена разложения упругой энергии скелета, характеризующего затраты энергии на появление новых поверхностей.
+
+Подстановка~\eqref{eq:skeletseries} в~\eqref{eq:equationskelet} дает линейные определяющие соотношения для скелета
+
+\begin{equation}
+  \label{eq:linequationskelet1}
+  \textbf{T} = \left( \textbf{K} \textbf{I}_1 - \sum_{\alpha}{b_{\alpha}p_{\alpha} - \alpha \omega} \right) \textbf{I} + \left( 2\mu - \frac{\alpha_J \omega}{J} \right) \textbf{e}',
+\end{equation}
+
+\begin{equation}
+  \label{eq:linequationskelet2}
+  \phi_1 = \phi_1^0 + (b_1 - \phi_1^0) \textbf{I}_1 + \frac{p_1}{N_1} + \frac{p_2}{N_{12}} + \alpha_{p1} \omega,
+\end{equation}
+
+\begin{equation}
+  \label{eq:linequationskelet3}
+  \phi_2 = \phi_2^0 + (b_2 - \phi_2^0) \textbf{I}_1 + \frac{p_2}{N_2} + \frac{p_2}{N_{12}} + \alpha_{p2} \omega,
+\end{equation}
+где $K = \lambda + \frac{2}{3} \mu$~--- модуль объемного сжатия скелета.
+
+Обсудим неравенства диссипаций~\eqref{eq:dissipneq2}. Учтем, что, согласно сделанным предположениям относительно начального состояния флюидов, $\psi_1^0 = \psi_2^0$, тогда справедлива следующая оценка
+
+\begin{equation}
+  \label{eq:approxdeltam}
+  \delta_m = - \sum_{\alpha \neq \beta}{\psi_{\alpha} + \frac{p_{\alpha}}{\rho_{\alpha}}\dot{m}_{\alpha \beta}} \approx - \sum_{alpha \neq \beta}{\frac{p_{\alpha}}{\rho_{\alpha}}\dot{m}_{\alpha \beta}} \approx \frac{\dot{m}}{\rho_2^0}(p_1 - p_2) \geq 0,
+\end{equation}
+где введено обозначение $\dot{m} = - \dot{m}_{12} = \dot{m}_{21}$. Величина $\dot{m} \geq 0$, если матрица подпитывает трещины. Удовлетворим неравенству~\eqref{eq:approxdeltam} с помощью простого уравнения, задающего закон обмена массой между флюидами
+
+\begin{equation}
+  \label{eq:intensofm}
+  \dot{m} = \frac{\rho^0}{\mu_f} A(\omega)(p_1 - p_2),
+\end{equation}
+где $A(\omega) \geq 0$~--- коэффициент, определяющий интенсивность массообмена. В результате растрескивания улучшается возможность транспорта жидкости внутри матрицы, что проявляется в усилении массообмена между флюидами. В случае неповрежденной матрицы~\eqref{eq:intensofm} совпадает с классическим выражением~\autocite{barenblatt1960basic}.
+
+Поступая аналогично~\autocite{kondaurov2007, izvekov2009, izvekov2010} примем следующий закон эволюции поврежденности, достаточный для удовлетворения неравенству диссипации $\delta_{\omega} \geq 0$
+
+\begin{equation}
+  \label{eq:evalomega}
+  \frac{\partial \omega}{\partial t} = -\frac{r_s}{\tau \beta} \left\langle \frac{\partial \Psi}{\partial \omega} \right\rangle,
+  \left\langle x \right\rangle =
+  \begin{cases}
+    x, \text{если } x \geqslant 0, \\
+    0, \text{если } x<0,
+  \end{cases}
+\end{equation}
+где $\tau$~--- характерное время запаздывания разрушения, $\beta$~--- размерный параметр.
+
+Физический смысл выражения~\eqref{eq:evalomega} заключается в том, что поврежденность развивается только в том случае, когда упругая энергия, высвобождающаяся при появлении новых поверхностей, превышает энергозатраты на их появление. Чем сильнее эта разница, тем интенсивнее развивается поврежденность. Уравнение~\eqref{eq:evalomega} является в некотором роде аналогом теории Гриффитса для изолированной трещины.
+
+Подставляя в~\eqref{eq:evalomega} представление потенциала скелета~\eqref{eq:skeletseries}, получим следующее линейное эволюционное уравнение на параметр повреждаемости
+
+\begin{equation}
+  \label{eq:evalomega1}
+  \frac{\partial \omega}{\partial t} = \frac{1}{\tau \beta} \left\langle  \alpha I_1 + \alpha_J J + \alpha_{p_1} p_1 + \alpha_{p_2} p_2 -\beta \omega - \gamma \right\rangle.
+\end{equation}
+
+Эволюция параметров однородного гидростатического напряженного состояния при отсутствии обмена между подсистемами описывается системой уравнений, следующих из~\eqrefs{eq:masbalance1, eq:masbalance2, eq:seqaulity}, с учетом~\eqrefs{eq:linequationskelet1, eq:linequationskelet2, eq:linequationskelet3, eq:evalomega1}:
+
+\begin{equation}
+  \label{eq:linequationskelet4}
+  \textbf{K} \textbf{I}_1 - b_1 p_1 - b_2 p_2 - \alpha \omega = C,
+\end{equation}
+
+\begin{equation}
+  \label{eq:linequationskelet5}
+  \left( \frac{1}{N_1} + \frac{\phi_1^0}{K_F} + \frac{b_1^2}{K} \right) \frac{\partial p_1}{\partial t} + \left( \frac{1}{N_{12}} + \frac{b_1 b_2}{K} \right) \frac{\partial p_2}{\partial t} + \left( \alpha_{p1} + \frac{\alpha b_1}{K} \right) \frac{\partial \omega}{\partial t} = 0,
+\end{equation}
+
+\begin{equation}
+  \label{eq:linequationskelet6}
+  \left( \frac{1}{N_2} + \frac{\phi_2^0}{K_F} + \frac{b_2^2}{K} \right) \frac{\partial p_1}{\partial t} + \left( \frac{1}{N_{12}} + \frac{b_1 b_2}{K} \right) \frac{\partial p_1}{\partial t} + \left( \alpha_{p2} + \frac{\alpha b_2}{K} \right) \frac{\partial \omega}{\partial t} = 0,
+\end{equation}
+
+\begin{equation}
+ \label{eq:linequationskelet7}
+   \begin{multlined}
+     \tau \frac{\partial \omega}{\partial t} = \left( K^{-1} \frac{\alpha^2}{\beta} - 1 \right) \omega + \frac{1}{\beta} \left( \alpha_{p1} + \frac{\alpha b_1}{K} \right) p_1 +
+     \\
+     + \frac{1}{\beta} \left( \alpha_{p2} + \frac{\alpha b_2}{K} \right) p_2 + \frac{1}{\beta} \left( \frac{\alpha C}{K} - \gamma \right).
+   \end{multlined}
+\end{equation}
+
+Решение данной системы имеет вид $\textbf{x} = \textbf{a} e^{\Gamma t } + \textbf{b}$, где $x=(I_1, p_1, p_2, \omega)^T$, $\textbf{a} = const, \textbf{b}=const$.
+
+Система неравенств
+
+\begin{equation}
+  \label{eq:neq1}
+  \frac{\alpha^2}{\beta} < K,
+\end{equation}
+
+\begin{equation}
+  \label{eq:neq2}
+  \left( \frac{1}{N_{12}} + \frac{b_1 b_2}{K} \right)^2 < \left( \frac{1}{N_1} + \frac{\phi_1^0}{K_f} + \frac{b_1^2}{K} \right) \left( \frac{1}{N_2} + \frac{\phi_2^0}{K_f} + \frac{b_2^2}{K} \right),
+\end{equation}
+является достаточным условием выполнения неравенства в показателе степени решения $\Gamma < 0$.  В дальнейшем эти ограничения на коэффициенты модели, гарантирующие устойчивость однородного напряженного состояния, считаются выполненными.
+
+Из ограниченности скорости  $\partial \omega / \partial t$ при $\tau \rightarrow 0 $, из~\eqref{eq:evalomega1} следует выражение для параметра $\omega$
+
+\begin{equation}
+  \label{eq:omeganext}
+  \omega = \max_{[0,t]} \left( \frac{1}{\beta} (\alpha I_1 + \alpha_J J + \alpha_{p_1} p_1 + \alpha_{p_2} p_2 -\beta \omega - \gamma) \right).
+\end{equation}
+
+Из выражения~\eqref{eq:evalomega1} следует критерий начала накопления поврежденности. Одновременное выполнение условий $\partial \omega / \partial t \geq 0$ и $\omega = 0$ дает для границы зоны упругого поведения в пространстве инвариантов тензора малой деформации следующее уравнение
+
+\begin{equation}
+  \label{eq:eq34}
+  \alpha I_1 + \alpha_J J + \alpha_{p_1} p_1 + \alpha_{p_2} p_2 -\beta \omega - \gamma = 0.
+\end{equation}
+
+Условие $\alpha I_1 + \alpha_J J + \alpha_{p_1} p_1 + \alpha_{p_2} p_2 -\beta \omega - \gamma < 0$ соответствует упругому поведению. При выполнении условия  $\alpha I_1 + \alpha_J J + \alpha_{p_1} p_1 + \alpha_{p_2} p_2 -\beta \omega - \gamma > 0$ возможны активный процесс ($\partial \omega / \partial t > 0$) и упругая разгрузка (пассивный процесс). В пассивном процессе полагается $\omega = 0$.
+
+
+
+
+
+
+% \section{Форматирование текста}\label{sec:ch1/sec1}
+
+% Мы можем сделать \textbf{жирный текст} и \textit{курсив}.
+
+% \section{Ссылки}\label{sec:ch1/sec2}
+
+% Сошлёмся на библиографию.
+% Одна ссылка: \cite[с.~54]{Sokolov}\cite[с.~36]{Gaidaenko}.
+% Две ссылки: \cite{Sokolov,Gaidaenko}.
+% Ссылка на собственные работы: \cite{vakbib1, confbib2}.
+% Много ссылок: %\cite[с.~54]{Lermontov,Management,Borozda} % такой «фокус»
+% %вызывает biblatex warning относительно опции sortcites, потому что неясно, к
+% %какому источнику относится уточнение о страницах, а bibtex об этой проблеме
+% %даже не предупреждает
+% \cite{Lermontov, Management, Borozda, Marketing, Constitution, FamilyCode,
+% Gost.7.0.53, Razumovski, Lagkueva, Pokrovski, Methodology, Nasirova, Berestova,
+% Kriger}%
+% \ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
+%     \cite{Sirotko, Lukina, Encyclopedia}%
+% }{% Примеры для biblatex через движок biber
+%     \cite{Sirotko2, Lukina2, Encyclopedia2}%
+% }%
+% .
+% И~ещё немного ссылок:~\cite{Article,Book,Booklet,Conference,Inbook,Incollection,Manual,Mastersthesis,
+% Misc,Phdthesis,Proceedings,Techreport,Unpublished}
+% % Следует обратить внимание, что пробел после запятой внутри \cite{}
+% % обрабатывается ожидаемо, а пробел перед запятой, может вызывать проблемы при
+% % обработке ссылок.
+% \cite{medvedev2006jelektronnye, CEAT:CEAT581, doi:10.1080/01932691.2010.513279,
+% Gosele1999161,Li2007StressAnalysis, Shoji199895, test:eisner-sample,
+% test:eisner-sample-shorted, AB_patent_Pomerantz_1968, iofis_patent1960}
+% \ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
+% }{% Примеры для biblatex через движок biber
+%     \cite{patent2h, patent3h, patent2}%
+% }%
+% .
+
+% \ifnumequal{\value{bibliosel}}{0}{% Примеры для bibtex8
+% Попытка реализовать несколько ссылок на конкретные страницы
+% для \texttt{bibtex} реализации библиографии:
+% [\citenum{Sokolov}, с.~54; \citenum{Gaidaenko}, с.~36].
+% }{% Примеры для biblatex через движок biber
+% Несколько источников (мультицитата):
+% % Тут специально написано по-разному тире, для демонстрации, что
+% % применение специальных тире в настоящий момент в biblatex приводит к непоказу
+% % "с.".
+% \cites[vii--x, 5, 7]{Sokolov}[v"--~x, 25, 526]{Gaidaenko}[vii--x, 5, 7]{Techreport},
+% работает только в \texttt{biblatex} реализации библиографии.
+% }%
+
+% Ссылки на собственные работы:~\cite{vakbib1, confbib1}
+
+% Сошлёмся на приложения: Приложение~\ref{app:A}, Приложение~\ref{app:B2}.
+
+% Сошлёмся на формулу: формула~\eqref{eq:equation1}.
+
+% Сошлёмся на изображение: рисунок~\ref{fig:knuth}.
+
+% Стандартной практикой является добавление к ссылкам префикса, характеризующего тип элемента.
+% Это не является строгим требованием, но~позволяет лучше ориентироваться в документах большого размера.
+% Например, для ссылок на~рисунки используется префикс \textit{fig},
+% для ссылки на~таблицу "--- \textit{tab}.
+
+% В таблице~\ref{tab:tab_pref} приложения~\ref{app:B4} приведён список рекомендуемых
+% к использованию стандартных префиксов.
+
+% \section{Формулы}\label{sec:ch1/sec3}
+
+% Благодаря пакету \textit{icomma}, \LaTeX~одинаково хорошо воспринимает
+% в~качестве десятичного разделителя и запятую (\(3,1415\)), и точку (\(3.1415\)).
+
+% \subsection{Ненумерованные одиночные формулы}\label{subsec:ch1/sec3/sub1}
+
+% Вот так может выглядеть формула, которую необходимо вставить в~строку
+% по~тексту: \(x \approx \sin x\) при \(x \to 0\).
+
+% А вот так выглядит ненумерованная отдельностоящая формула c подстрочными
+% и надстрочными индексами:
+% \[
+% (x_1+x_2)^2 = x_1^2 + 2 x_1 x_2 + x_2^2
+% \]
+
+% Формула с неопределенным интегралом:
+% \[
+% \int f(\alpha+x)=\sum\beta
+% \]
+
+% При использовании дробей формулы могут получаться очень высокие:
+% \[
+%   \frac{1}{\sqrt{2}+
+%   \displaystyle\frac{1}{\sqrt{2}+
+%   \displaystyle\frac{1}{\sqrt{2}+\cdots}}}
+% \]
+
+% В формулах можно использовать греческие буквы:
+% %Все \original... команды заранее, ради этого примера, определены в Dissertation\userstyles.tex
+% \[
+% \alpha\beta\gamma\delta\originalepsilon\epsilon\zeta\eta\theta%
+% \vartheta\iota\kappa\varkappa\lambda\mu\nu\xi\pi\varpi\rho\varrho%
+% \sigma\varsigma\tau\upsilon\originalphi\phi\chi\psi\omega\Gamma\Delta%
+% \Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega
+% \]
+% \[%https://texfaq.org/FAQ-boldgreek
+% \boldsymbol{\alpha\beta\gamma\delta\originalepsilon\epsilon\zeta\eta%
+% \theta\vartheta\iota\kappa\varkappa\lambda\mu\nu\xi\pi\varpi\rho%
+% \varrho\sigma\varsigma\tau\upsilon\originalphi\phi\chi\psi\omega\Gamma%
+% \Delta\Theta\Lambda\Xi\Pi\Sigma\Upsilon\Phi\Psi\Omega}
+% \]
+
+% Для добавления формул можно использовать пары \verb+$+\dots\verb+$+ и \verb+$$+\dots\verb+$$+,
+% но~они считаются устаревшими.
+% Лучше использовать их функциональные аналоги \verb+\(+\dots\verb+\)+ и \verb+\[+\dots\verb+\]+.
+
+% \subsection{Ненумерованные многострочные формулы}\label{subsec:ch1/sec3/sub2}
+
+% Вот так можно написать две формулы, не нумеруя их, чтобы знаки <<равно>> были
+% строго друг под другом:
+% \begin{align}
+%   f_W & =  \min \left( 1, \max \left( 0, \frac{W_{soil} / W_{max}}{W_{crit}} \right)  \right), \nonumber \\
+%   f_T & =  \min \left( 1, \max \left( 0, \frac{T_s / T_{melt}}{T_{crit}} \right)  \right), \nonumber
+% \end{align}
+
+% Выровнять систему ещё и по переменной \( x \) можно, используя окружение
+% \verb|alignedat| из пакета \verb|amsmath|. Вот так:
+% \[
+%     |x| = \left\{
+%     \begin{alignedat}{2}
+%         &&x, \quad &\text{eсли } x\geqslant 0 \\
+%         &-&x, \quad & \text{eсли } x<0
+%     \end{alignedat}
+%     \right.
+% \]
+% Здесь первый амперсанд (в исходном \LaTeX\ описании формулы) означает
+% выравнивание по~левому краю, второй "--- по~\( x \), а~третий "--- по~слову
+% <<если>>. Команда \verb|\quad| делает большой горизонтальный пробел.
+
+% Ещё вариант:
+% \[
+%     |x|=
+%     \begin{cases}
+%     \phantom{-}x, \text{если } x \geqslant 0 \\
+%     -x, \text{если } x<0
+%     \end{cases}
+% \]
+
+% Кроме того, для  нумерованных формул \verb|alignedat| делает вертикальное
+% выравнивание номера формулы по центру формулы. Например, выравнивание
+% компонент вектора:
+% \begin{equation}
+% \label{eq:2p3}
+% \begin{alignedat}{2}
+% {\mathbf{N}}_{o1n}^{(j)} = \,{\sin} \phi\,n\!\left(n+1\right)
+%          {\sin}\theta\,
+%          \pi_n\!\left({\cos} \theta\right)
+%          \frac{
+%               z_n^{(j)}\!\left( \rho \right)
+%               }{\rho}\,
+%           &{\boldsymbol{\hat{\mathrm e}}}_{r}\,+   \\
+% +\,
+% {\sin} \phi\,
+%          \tau_n\!\left({\cos} \theta\right)
+%          \frac{
+%             \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
+%               }{\rho}\,
+%             &{\boldsymbol{\hat{\mathrm e}}}_{\theta}\,+   \\
+% +\,
+% {\cos} \phi\,
+%          \pi_n\!\left({\cos} \theta\right)
+%          \frac{
+%             \left[\rho z_n^{(j)}\!\left( \rho \right)\right]^{\prime}
+%               }{\rho}\,
+%             &{\boldsymbol{\hat{\mathrm e}}}_{\phi}\:.
+% \end{alignedat}
+% \end{equation}
+
+% Ещё об отступах. Иногда для лучшей <<читаемости>> формул полезно
+% немного исправить стандартные интервалы \LaTeX\ с учётом логической
+% структуры самой формулы. Например в формуле~\ref{eq:2p3} добавлен
+% небольшой отступ \verb+\,+ между основными сомножителями, ниже
+% результат применения всех вариантов отступа:
+% \begin{align*}
+% \backslash! &\quad f(x) = x^2\! +3x\! +2 \\
+%   \mbox{по-умолчанию} &\quad f(x) = x^2+3x+2 \\
+% \backslash, &\quad f(x) = x^2\, +3x\, +2 \\
+% \backslash{:} &\quad f(x) = x^2\: +3x\: +2 \\
+% \backslash; &\quad f(x) = x^2\; +3x\; +2 \\
+% \backslash \mbox{space} &\quad f(x) = x^2\ +3x\ +2 \\
+% \backslash \mbox{quad} &\quad f(x) = x^2\quad +3x\quad +2 \\
+% \backslash \mbox{qquad} &\quad f(x) = x^2\qquad +3x\qquad +2
+% \end{align*}
+
+% Можно использовать разные математические алфавиты:
+% \begin{align}
+% \mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber \\
+% \mathfrak{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber \\
+% \mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ} \nonumber
+% \end{align}
+
+% Посмотрим на систему уравнений на примере аттрактора Лоренца:
+
+% \[
+% \left\{
+%   \begin{array}{rl}
+%     \dot x = & \sigma (y-x) \\
+%     \dot y = & x (r - z) - y \\
+%     \dot z = & xy - bz
+%   \end{array}
+% \right.
+% \]
+
+% А для вёрстки матриц удобно использовать многоточия:
+% \[
+% \left(
+%   \begin{array}{ccc}
+%     a_{11} & \ldots & a_{1n} \\
+%     \vdots & \ddots & \vdots \\
+%     a_{n1} & \ldots & a_{nn} \\
+%   \end{array}
+% \right)
+% \]
+
+% \subsection{Нумерованные формулы}\label{subsec:ch1/sec3/sub3}
+
+% А вот так пишется нумерованная формула:
+% \begin{equation}
+%   \label{eq:equation1}
+%   e = \lim_{n \to \infty} \left( 1+\frac{1}{n} \right) ^n
+% \end{equation}
+
+% Нумерованных формул может быть несколько:
+% \begin{equation}
+%   \label{eq:equation2}
+%   \lim_{n \to \infty} \sum_{k=1}^n \frac{1}{k^2} = \frac{\pi^2}{6}
+% \end{equation}
+
+% Впоследствии на формулы~\eqref{eq:equation1} и~\eqref{eq:equation2} можно ссылаться.
+
+% Сделать так, чтобы номер формулы стоял напротив средней строки, можно,
+% используя окружение \verb|multlined| (пакет \verb|mathtools|) вместо
+% \verb|multline| внутри окружения \verb|equation|. Вот так:
+% \begin{equation} % \tag{S} % tag - вписывает свой текст
+%   \label{eq:equation3}
+%     \begin{multlined}
+%         1+ 2+3+4+5+6+7+\dots + \\
+%         + 50+51+52+53+54+55+56+57 + \dots + \\
+%         + 96+97+98+99+100=5050
+%     \end{multlined}
+% \end{equation}
+
+% Используя команду \verb|\eqrefs|, можно
+% красиво ссылаться сразу на несколько формул
+% \eqrefs{eq:equation1, eq:equation3, eq:equation2}, даже перепутав
+% порядок ссылок \verb|\eqrefs{eq1, eq3, eq2}|.
+% Аналогично, для ссылок на несколько рисунков, таблиц и~т.\:д.
+% \refs{sec:ch1/sec1, sec:ch1/sec2, sec:ch1/sec3} можно использовать
+% команду \verb|\refs|.
+% Обе эти команды определены в файле \verb|common/packages.tex|.
+
+% Уравнения~\eqrefs{eq:subeq_1,eq:subeq_2} демонстрируют возможности
+% окружения \verb|\subequations|.
+% \begin{subequations}
+%     \label{eq:subeq_1}
+%     \begin{gather}
+%         y = x^2 + 1 \label{eq:subeq_1-1} \\
+%         y = 2 x^2 - x + 1 \label{eq:subeq_1-2}
+%     \end{gather}
+% \end{subequations}
+% Ссылки на отдельные уравнения~\eqrefs{eq:subeq_1-1,eq:subeq_1-2,eq:subeq_2-1}.
+% \begin{subequations}
+%     \label{eq:subeq_2}
+%     \begin{align}
+%         y &= x^3 + x^2 + x + 1 \label{eq:subeq_2-1} \\
+%         y &= x^2
+%     \end{align}
+% \end{subequations}
+
+% \subsection{Форматирование чисел и размерностей величин}\label{sec:units}
+
+% Числа форматируются при помощи команды \verb|\num|:
+% \num{5,3};
+% \num{2,3e8};
+% \num{12345,67890};
+% \num{2,6 d4};
+% \num{1+-2i};
+% \num{.3e45};
+% \num[exponent-base=2]{5 e64};
+% \num[exponent-base=2,exponent-to-prefix]{5 e64};
+% \num{1.654 x 2.34 x 3.430}
+% \num{1 2 x 3 / 4}.
+% Для написания последовательности чисел можно использовать команды \verb|\numlist| и \verb|\numrange|:
+% \numlist{10;30;50;70}; \numrange{10}{30}.
+% Значения углов можно форматировать при помощи команды \verb|\ang|:
+% \ang{2.67};
+% \ang{30,3};
+% \ang{-1;;};
+% \ang{;-2;};
+% \ang{;;-3};
+% \ang{300;10;1}.
+
+% Обратите внимание, что ГОСТ запрещает использование знака <<->> для обозначения отрицательных чисел
+% за исключением формул, таблиц и~рисунков.
+% Вместо него следует использовать слово <<минус>>.
+
+% Размерности можно записывать при помощи команд \verb|\si| и \verb|\SI|:
+% \si{\farad\squared\lumen\candela};
+% \si{\joule\per\mole\per\kelvin};
+% \si[per-mode = symbol-or-fraction]{\joule\per\mole\per\kelvin};
+% \si{\metre\per\second\squared};
+% \SI{0.10(5)}{\neper};
+% \SI{1.2-3i e5}{\joule\per\mole\per\kelvin};
+% \SIlist{1;2;3;4}{\tesla};
+% \SIrange{50}{100}{\volt}.
+% Список единиц измерений приведён в таблицах~\refs{tab:unit:base,
+% tab:unit:derived,tab:unit:accepted,tab:unit:physical,tab:unit:other}.
+% Приставки единиц приведены в~таблице~\ref{tab:unit:prefix}.
+
+% С дополнительными опциями форматирования можно ознакомиться в~описании пакета \texttt{siunitx};
+% изменить или добавить единицы измерений можно в~файле \texttt{siunitx.cfg}.
+
+% \begin{table}
+%     \centering
+%     \captionsetup{justification=centering} % выравнивание подписи по-центру
+%     \caption{Основные величины СИ}\label{tab:unit:base}
+%     \begin{tabular}{llc}
+%         \toprule
+%         Название  & Команда                & Символ         \\
+%         \midrule
+%         Ампер     & \verb|\ampere| & \si{\ampere}   \\
+%         Кандела   & \verb|\candela| & \si{\candela}  \\
+%         Кельвин   & \verb|\kelvin| & \si{\kelvin}   \\
+%         Килограмм & \verb|\kilogram| & \si{\kilogram} \\
+%         Метр      & \verb|\metre| & \si{\metre}    \\
+%         Моль      & \verb|\mole| & \si{\mole}     \\
+%         Секунда   & \verb|\second| & \si{\second}   \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+
+% \begin{table}
+%   \small
+%   \centering
+%   \begin{threeparttable}% выравнивание подписи по границам таблицы
+%     \caption{Производные единицы СИ}\label{tab:unit:derived}
+%     \begin{tabular}{llc|llc}
+%         \toprule
+%         Название       & Команда                 & Символ              & Название & Команда & Символ \\
+%         \midrule
+%         Беккерель      & \verb|\becquerel|  & \si{\becquerel}     &
+%         Ньютон         & \verb|\newton|  & \si{\newton}                                      \\
+%         Градус Цельсия & \verb|\degreeCelsius| & \si{\degreeCelsius} &
+%         Ом             & \verb|\ohm| & \si{\ohm}                                         \\
+%         Кулон          & \verb|\coulomb| & \si{\coulomb}       &
+%         Паскаль        & \verb|\pascal| & \si{\pascal}                                      \\
+%         Фарад          & \verb|\farad| & \si{\farad}         &
+%         Радиан         & \verb|\radian| & \si{\radian}                                      \\
+%         Грей           & \verb|\gray| & \si{\gray}          &
+%         Сименс         & \verb|\siemens| & \si{\siemens}                                     \\
+%         Герц           & \verb|\hertz| & \si{\hertz}         &
+%         Зиверт         & \verb|\sievert| & \si{\sievert}                                     \\
+%         Генри          & \verb|\henry| & \si{\henry}         &
+%         Стерадиан      & \verb|\steradian| & \si{\steradian}                                   \\
+%         Джоуль         & \verb|\joule| & \si{\joule}         &
+%         Тесла          & \verb|\tesla| & \si{\tesla}                                       \\
+%         Катал          & \verb|\katal| & \si{\katal}         &
+%         Вольт          & \verb|\volt| & \si{\volt}                                        \\
+%         Люмен          & \verb|\lumen| & \si{\lumen}         &
+%         Ватт           & \verb|\watt| & \si{\watt}                                        \\
+%         Люкс           & \verb|\lux| & \si{\lux}           &
+%         Вебер          & \verb|\weber| & \si{\weber}                                       \\
+%         \bottomrule
+%     \end{tabular}
+%   \end{threeparttable}
+% \end{table}
+
+% \begin{table}
+%   \centering
+%   \begin{threeparttable}% выравнивание подписи по границам таблицы
+%     \caption{Внесистемные единицы}\label{tab:unit:accepted}
+
+%     \begin{tabular}{llc}
+%         \toprule
+%         Название        & Команда                 & Символ          \\
+%         \midrule
+%         День            & \verb|\day| & \si{\day}       \\
+%         Градус          & \verb|\degree| & \si{\degree}    \\
+%         Гектар          & \verb|\hectare| & \si{\hectare}   \\
+%         Час             & \verb|\hour| & \si{\hour}      \\
+%         Литр            & \verb|\litre| & \si{\litre}     \\
+%         Угловая минута  & \verb|\arcminute| & \si{\arcminute} \\
+%         Угловая секунда & \verb|\arcsecond| & \si{\arcsecond} \\ %
+%         Минута          & \verb|\minute| & \si{\minute}    \\
+%         Тонна           & \verb|\tonne| & \si{\tonne}     \\
+%         \bottomrule
+%     \end{tabular}
+%   \end{threeparttable}
+% \end{table}
+
+% \begin{table}
+%     \centering
+%     \captionsetup{justification=centering}
+%     \caption{Внесистемные единицы, получаемые из эксперимента}\label{tab:unit:physical}
+%     \begin{tabular}{llc}
+%         \toprule
+%         Название                & Команда                 & Символ                 \\
+%         \midrule
+%         Астрономическая единица & \verb|\astronomicalunit| & \si{\astronomicalunit} \\
+%         Атомная единица массы   & \verb|\atomicmassunit| & \si{\atomicmassunit}   \\
+%         Боровский радиус        & \verb|\bohr| & \si{\bohr}             \\
+%         Скорость света          & \verb|\clight| & \si{\clight}           \\
+%         Дальтон                 & \verb|\dalton| & \si{\dalton}           \\
+%         Масса электрона         & \verb|\electronmass| & \si{\electronmass}     \\
+%         Электрон Вольт          & \verb|\electronvolt| & \si{\electronvolt}     \\
+%         Элементарный заряд      & \verb|\elementarycharge| & \si{\elementarycharge} \\
+%         Энергия Хартри          & \verb|\hartree| & \si{\hartree}          \\
+%         Постоянная Планка       & \verb|\planckbar| & \si{\planckbar}        \\
+%         \bottomrule
+%     \end{tabular}
+% \end{table}
+
+% \begin{table}
+%   \centering
+%   \begin{threeparttable}% выравнивание подписи по границам таблицы
+%     \caption{Другие внесистемные единицы}\label{tab:unit:other}
+%     \begin{tabular}{llc}
+%         \toprule
+%         Название                  & Команда                 & Символ             \\
+%         \midrule
+%         Ангстрем                  & \verb|\angstrom| & \si{\angstrom}     \\
+%         Бар                       & \verb|\bar| & \si{\bar}          \\
+%         Барн                      & \verb|\barn| & \si{\barn}         \\
+%         Бел                       & \verb|\bel| & \si{\bel}          \\
+%         Децибел                   & \verb|\decibel| & \si{\decibel}      \\
+%         Узел                      & \verb|\knot| & \si{\knot}         \\
+%         Миллиметр ртутного столба & \verb|\mmHg| & \si{\mmHg}         \\
+%         Морская миля              & \verb|\nauticalmile| & \si{\nauticalmile} \\
+%         Непер                     & \verb|\neper| & \si{\neper}        \\
+%         \bottomrule
+%     \end{tabular}
+%   \end{threeparttable}
+% \end{table}
+
+% \begin{table}
+%   \small
+%   \centering
+%   \begin{threeparttable}% выравнивание подписи по границам таблицы
+%     \caption{Приставки СИ}\label{tab:unit:prefix}
+%     \begin{tabular}{llcc|llcc}
+%         \toprule
+%         Приставка & Команда                 & Символ      & Степень &
+%         Приставка & Команда                 & Символ      & Степень   \\
+%         \midrule
+%         Иокто     & \verb|\yocto| & \si{\yocto} & -24     &
+%         Дека      & \verb|\deca| & \si{\deca}  & 1         \\
+%         Зепто     & \verb|\zepto| & \si{\zepto} & -21     &
+%         Гекто     & \verb|\hecto| & \si{\hecto} & 2         \\
+%         Атто      & \verb|\atto| & \si{\atto}  & -18     &
+%         Кило      & \verb|\kilo| & \si{\kilo}  & 3         \\
+%         Фемто     & \verb|\femto| & \si{\femto} & -15     &
+%         Мега      & \verb|\mega| & \si{\mega}  & 6         \\
+%         Пико      & \verb|\pico| & \si{\pico}  & -12     &
+%         Гига      & \verb|\giga| & \si{\giga}  & 9         \\
+%         Нано      & \verb|\nano| & \si{\nano}  & -9      &
+%         Терра     & \verb|\tera| & \si{\tera}  & 12        \\
+%         Микро     & \verb|\micro| & \si{\micro} & -6      &
+%         Пета      & \verb|\peta| & \si{\peta}  & 15        \\
+%         Милли     & \verb|\milli| & \si{\milli} & -3      &
+%         Екса      & \verb|\exa| & \si{\exa}   & 18        \\
+%         Санти     & \verb|\centi| & \si{\centi} & -2      &
+%         Зетта     & \verb|\zetta| & \si{\zetta} & 21        \\
+%         Деци      & \verb|\deci| & \si{\deci}  & -1      &
+%         Иотта     & \verb|\yotta| & \si{\yotta} & 24        \\
+%         \bottomrule
+%     \end{tabular}
+%   \end{threeparttable}
+% \end{table}
+
+% \subsection{Заголовки с формулами: \texorpdfstring{\(a^2 + b^2 = c^2\)}{%
+% a\texttwosuperior\ + b\texttwosuperior\ = c\texttwosuperior},
+% \texorpdfstring{\(\left\vert\textrm{{Im}}\Sigma\left(
+% \protect\varepsilon\right)\right\vert\approx const\)}{|ImΣ (ε)| ≈ const},
+% \texorpdfstring{\(\sigma_{xx}^{(1)}\)}{σ\_\{xx\}\textasciicircum\{(1)\}}
+% }\label{subsec:with_math}
+
+% Пакет \texttt{hyperref} берёт текст для закладок в pdf-файле из~аргументов
+% команд типа \verb|\section|, которые могут содержать математические формулы,
+% а~также изменения цвета текста или шрифта, которые не отображаются в~закладках.
+% Чтобы использование формул в заголовках не вызывало в~логе компиляции появление
+% предупреждений типа <<\texttt{Token not allowed in~a~PDF string
+% (Unicode):(hyperref) removing...}>>, следует использовать конструкцию
+% \verb|\texorpdfstring{}{}|, где в~первых фигурных скобках указывается
+% формула, а~во~вторых "--- запись формулы для закладок.
+
+% \section{Рецензирование текста}\label{sec:markup}
+
+% В шаблоне для диссертации и автореферата заданы команды рецензирования.
+% Они видны при компиляции шаблона в режиме черновика или при установке
+% соответствующей настройки (\verb+showmarkup+) в~файле \verb+common/setup.tex+.
+
+% Команда \verb+\todo+ отмечает текст красным цветом.
+% \todo{Например, так.}
+
+% Команда \verb+\note+ позволяет выбрать цвет текста.
+% \note{Чёрный, } \note[red]{красный, } \note[green]{зелёный, }
+% \note[blue]{синий.} \note[orange]{Обратите внимание на ширину и расстановку
+% формирующихся пробелов, в~результате приведённой записи (зависит также
+% от~применяемого компилятора).}
+
+% Окружение \verb+commentbox+ также позволяет выбрать цвет.
+
+% \begin{commentbox}[red]
+%         Красный текст.
+
+%         Несколько параграфов красного текста.
+% \end{commentbox}
+
+% \begin{commentbox}[blue]
+%         Синяя формула.
+
+%         \begin{equation}
+%                 \alpha + \beta = \gamma
+%         \end{equation}
+% \end{commentbox}
+
+% \verb+commentbox+ позволяет закомментировать участок кода в~режиме чистовика.
+% Чтобы убрать кусок кода для всех режимов, можно использовать окружение
+% \verb+comment+.
+
+% \begin{comment}
+%         Этот текст всегда скрыт.
+% \end{comment}
 
 \FloatBarrier

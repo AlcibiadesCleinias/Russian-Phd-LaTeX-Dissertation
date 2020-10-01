@@ -1,5 +1,3 @@
-# -*- mode: perl; -*-
-
 $DRAFTON = $ENV{DRAFTON};
 $DRAFTON //= '';
 $SHOWMARKUP = $ENV{SHOWMARKUP};
@@ -102,9 +100,6 @@ $bibtex = 'bibtex8 -B -c utf8cyrillic.csf %B';
 
 # set to 1 to count CPU time
 $show_time = $TIMERON;
-
-# maximum number of passes
-$max_repeat = 6;
 
 # record access files
 $recorder = 1;

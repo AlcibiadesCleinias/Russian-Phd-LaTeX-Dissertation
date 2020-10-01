@@ -1,11 +1,6 @@
 %%% Кодировки и шрифты %%%
 \ifxetexorluatex
-    % Язык по-умолчанию русский с поддержкой приятных команд пакета babel
-    \ifnewpoly
-        \setmainlanguage[babelshorthands=true,indentfirst=true]{russian}
-    \else
-        \setmainlanguage[babelshorthands=true]{russian}
-    \fi
+    \setmainlanguage[babelshorthands=true]{russian}    % Язык по-умолчанию русский с поддержкой приятных команд пакета babel
     \setotherlanguage{english}                         % Дополнительный язык = английский (в американской вариации по-умолчанию)
 
     % Проверка существования шрифтов. Недоступна в pdflatex
