@@ -1,3 +1,6 @@
+# Magister dissertation (MIPT, 2020)
+## <i>Effect of overpressure in dual porous media on well productivity</i>
+
 LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
 
 ## Особенности
