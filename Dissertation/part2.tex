@@ -50,7 +50,7 @@
 
 Модуль $E_2$ определяется, как $E_2 = S_n \Delta \lambda = S_n \xi_2 L$, где $S_n$~--- нормальная жесткость одиночной трещины, $\Delta \lambda$~--- ширина одиночной трещины, $L$~--- характерный размер блока~\autocite{kocharyan2016}.
 
-Возьмем $S_n \approx 10^2$ ГПа/м, $L \approx 1$ м, $E_1 = 10$ ГПа, согласующиеся с данными из Таблиц~\ref{tab:coef1, tab:coef2}, получим, что отношение упругих модулей будет равно $E_2/E_1 \approx 0.1$, тогда согласно~\eqref{eq:sigmaeq3} отношение $b_1/b_2 \approx 10$, а из~\eqref{eq:sigmaeq2} следует $b_1 = 0.9 \alpha_1$, $b_2 = 0.9 \alpha_1$.
+Возьмем $S_n \approx 10^2$ ГПа/м, $L \approx 1$ м, $E_1 = 10$ ГПа, согласующиеся с данными из Таблиц~\ref{tab:coef1}, ~\ref{tab:coef2}, получим, что отношение упругих модулей будет равно $E_2/E_1 \approx 0.1$, тогда согласно~\eqref{eq:sigmaeq3} отношение $b_1/b_2 \approx 10$, а из~\eqref{eq:sigmaeq2} следует $b_1 = 0.9 \alpha_1$, $b_2 = 0.9 \alpha_1$.
 Оценим модули $N_{\alpha}$ и $N_{12}$ с помощью предложенной упрощенной схемы. Учитывая, что деформация трещин $\varepsilon_2 = \Delta \phi_2/\phi_2$, деформация матрицы $\varepsilon_1 = \Delta \xi_1 / \xi_1 = \Delta \phi_1 / \phi_1 - \Delta n_1 / n_1$, при этом $\Delta n_1 = alpha_1 \varepsilon_1 + p_1 / \widetilde{N}$ из уравнений~\eqref{eq:sigmaeq} и~\eqref{eq:sigmaeq1} получим оценку
 
 \begin{table} [htbp]%
@@ -106,7 +106,7 @@
             \toprule     %%% верхняя линейка
             Величина & Значение & Материал \\
             \midrule %%% тонкий разделитель. Отделяет названия столбцов. Обязателен по ГОСТ 2.105 пункт 4.4.5
-            $\nu$                    &    0.11–0.29       &  Сланцы (Woodford shale) \\
+            $\nu \qquad \qquad \qquad$                    &    0.11–0.29       &  Сланцы (Woodford shale) \\
                                 &    (анизотропия)~\autocite{abousleiman2007geomechanics}        &  \\
                                 &    0.35~\autocite{eseme2007review}        & Сланцы с высоким  \\
                                 &           &  содержанием органики \\
@@ -116,50 +116,6 @@
             \bottomrule %%% нижняя линейка
         \end{tabular}%
     \end{SingleSpace}
-\end{table}
-
-\begin{table} [htbp]
-  \centering
-  \begin{threeparttable}% выравнивание подписи по границам таблицы
-    \caption{Название таблицы}\label{tab:Ts0Sib}%
-    \begin{tabular}{| p{3cm} || p{3cm} | p{7cm} |}
-    \hline
-    \hline
-    Величина & \centering Значение & \centering Материал \\
-    \hline
-    $K_f$, ГПа      &\centering 0.5-5~\autocite{craft1959petroleum}         &\centering Нефть   \\
-                    &\centering    1.7~\autocite{abousleiman2005poromechanics}        &   \\
-\hline
-    $K_1$, ГПа          &\centering 1.1~\autocite{abousleiman2005poromechanics}           &\centering Сланцы (Gulf of Mexico)    \\
-                        &\centering    9.8~\autocite{abousleiman2007geomechanics}        &\centering  Сланцы (Woodford shale) \\
-\hline
-    $\alpha_1$          &\centering 0.96~\autocite{abousleiman2005poromechanics}          &\centering Сланцы (Gulf of Mexico)   \\
-    $\xi_2$             &\centering 0.0001–0.01~\autocite{snow1968rock}  &   \\
-\hline
-    $S_n$, ГПа/м                  &\centering    105–117~\autocite{ye2016fracture}      &\centering  Сланцы (Barnett) \\
-                        &\centering    226~\autocite{ye2016fracture}       &\centering  Сланцы (Mancos) \\
-                        &\centering    25–40~\autocite{ye2016fracture}        &\centering  Сланцы (Pierre) \\
-\hline
-    $L$, м                    &\centering    0.2–30~\autocite{snow1968rock}        &   \\
-\hline
-    $E_1 = K_1 + \frac{4}{3}\mu $,                     &\centering    2.1~\autocite{abousleiman2005poromechanics}        &\centering  Сланцы (Gulf of Mexico) \\
-    ГПа                    &\centering    10–20         &\centering  Сланцы (Woodford shale) \\
-                        &\centering    (анизотропия)~\autocite{abousleiman2007geomechanics}       &  \\
-                        &\centering    $5.1  \pm 0.5$~\autocite{eseme2007review}        &\centering  Сланцы с высоким \\
-                        &\centering           &\centering  содержанием органики \\
-                        &\centering    $16.6 \pm 2$~\autocite{eseme2007review}        &\centering  Сланцы с низким \\
-                        &\centering           &\centering содержанием органики  \\
-\hline
-    $n_1$                  &\centering    3.8\%~\autocite{abousleiman2007geomechanics}        &\centering  Сланцы (Woodford shale) \\
-                        &\centering    14\%~\autocite{abousleiman2005poromechanics}       &\centering  Сланцы (Gulf of Mexico) \\
-\hline
-    $\widetilde{N}$, ГПа                    &\centering    27.57~\autocite{abousleiman2005poromechanics}        &\centering Сланцы (Gulf of Mexico)  \\
-
-
-    \hline
-    \hline
-    \end{tabular}
-  \end{threeparttable}
 \end{table}
 
 \begin{equation}
